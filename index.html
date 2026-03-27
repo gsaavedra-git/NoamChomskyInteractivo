@@ -3,393 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chomsky Interactivo: Descifra el Lenguaje, Cuestiona el Poder</title>
+    <title>Chomsky Interactivo — Descifra el Lenguaje, Cuestiona el Poder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .modal {
-            transition: opacity 0.3s ease;
-        }
-        .section-title {
-            font-weight: 900;
-            font-size: 2.25rem; /* 36px */
-            line-height: 2.5rem; /* 40px */
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .section-subtitle {
-            font-weight: 700;
-            font-size: 1.5rem; /* 24px */
-            line-height: 2rem; /* 32px */
-            margin-bottom: 1rem;
-            color: #1e40af; /* blue-800 */
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <!-- Barra de Navegación -->
-    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <span class="font-bold text-xl text-blue-800">Chomsky Interactivo</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#inicio" class="text-gray-600 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                        <a href="#linguistica" class="text-gray-600 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Revolución Lingüística</a>
-                        <a href="#politica" class="text-gray-600 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Crítico del Poder</a>
-                        <a href="#quiz" class="text-gray-600 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pon a Prueba</a>
-                        <a href="#legado" class="text-gray-600 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Legado</a>
-                    </div>
-                </div>
+    <!-- Barra de progreso de lectura -->
+    <div id="progress-bar"></div>
+
+    <!-- Navegación -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-brand">Chomsky <span>Interactivo</span></a>
+            <div class="nav-links" id="nav-links">
+                <a href="#inicio"      class="nav-link" data-section="inicio">Inicio</a>
+                <a href="#linguistica" class="nav-link" data-section="linguistica">Lingüística</a>
+                <a href="#politica"    class="nav-link" data-section="politica">Crítico del Poder</a>
+                <a href="#quiz"        class="nav-link" data-section="quiz">Quiz</a>
+                <a href="#legado"      class="nav-link" data-section="legado">Legado</a>
             </div>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- Sección de Inicio -->
-    <header id="inicio" class="bg-white">
-        <div class="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                <span class="block">Descifra el Lenguaje.</span>
-                <span class="block text-blue-600">Cuestiona el Poder.</span>
+    <!-- Overlay móvil -->
+    <div class="mobile-overlay hidden" id="mobile-overlay"></div>
+
+    <!-- ═══════════════════════════════════════ HERO ═══ -->
+    <header id="inicio" class="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Lingüística · Filosofía Política · Pensamiento Crítico</p>
+            <h1 class="hero-title">
+                <span>Descifra el</span>
+                <em>Lenguaje.</em>
+                <span>Cuestiona el</span>
+                <em>Poder.</em>
             </h1>
-            <p class="mt-6 max-w-lg mx-auto text-xl text-gray-500">
-                Una exploración interactiva de las ideas revolucionarias de Noam Chomsky que cambiaron nuestra forma de entender la mente y la sociedad.
+            <p class="hero-subtitle">
+                Una exploración interactiva de las ideas que Noam Chomsky —lingüista, filósofo y activista— ha dedicado su vida a construir.
             </p>
-            <div class="mt-8">
-                <a href="#linguistica" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
-                    ¡Comienza el Viaje!
-                </a>
+            <div class="hero-actions">
+                <a href="#linguistica" class="btn-primary">Comenzar Exploración</a>
+                <a href="#quiz" class="btn-outline">Ir al Quiz →</a>
             </div>
+        </div>
+
+        <div class="hero-quote">
+            <blockquote>
+                "El lenguaje es un proceso de libre creación; sus leyes son fijas, pero la manera en que se usan es libre e infinitamente variada."
+            </blockquote>
+            <cite>— Noam Chomsky</cite>
+        </div>
+
+        <div class="hero-scroll">
+            <span>Explora</span>
+            <div class="hero-scroll-line"></div>
         </div>
     </header>
 
-    <!-- Sección: Revolución Lingüística -->
-    <main id="linguistica" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title">La Revolución Lingüística 🧠🗣️</h2>
-
-            <!-- Módulo Interactivo 1: Generador de Oraciones -->
-            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
-                <h3 class="section-subtitle">Módulo 1: El Generador de Oraciones Creativas</h3>
-                <p class="mb-4">Chomsky argumentó que nuestra mente no memoriza oraciones, sino que tiene reglas para generar infinitas frases nuevas. Haz clic para ver este poder creativo en acción.</p>
-                <div class="text-center">
-                    <button id="generateSentenceBtn" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600 transition duration-300">Generar Oración Nueva</button>
-                    <div id="sentenceOutput" class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-800 rounded-r-lg text-xl font-semibold min-h-[3rem]">
-                        <!-- La oración generada aparecerá aquí -->
-                    </div>
-                    <p id="sentenceExplanation" class="text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-500">Nunca has leído esta frase, pero tu cerebro la entiende. Esa es la magia de la Gramática Generativa.</p>
-                </div>
-            </div>
-
-            <!-- Módulo Interactivo 2: Transformador de Estructuras -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h3 class="section-subtitle">Módulo 2: El Transformador de Estructuras</h3>
-                <p class="mb-4">Una misma idea (estructura profunda) puede expresarse de distintas formas (estructura superficial). ¡Pruébalo!</p>
-                <div class="text-center">
-                    <div id="structureOutput" class="p-4 bg-gray-100 rounded-lg text-xl font-semibold mb-4 transition-all duration-500">
-                        El medio de comunicación manipuló la noticia.
-                    </div>
-                    <button id="transformStructureBtn" class="bg-green-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-600 transition duration-300">Ver desde otra perspectiva</button>
-                    <p id="structureExplanation" class="text-sm text-gray-500 mt-2 opacity-0 transition-opacity duration-500">Dos frases, una misma idea central. Acabas de realizar una transformación sintáctica.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Sección: Crítico del Poder -->
-    <section id="politica" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title">El Crítico del Poder 📰✊</h2>
-            <p class="text-center max-w-3xl mx-auto mb-12">Chomsky propuso un "Modelo de Propaganda" para explicar cómo los medios, incluso en sociedades "libres", moldean nuestra percepción de la realidad. Analiza esta noticia ficticia usando sus 5 filtros.</p>
-
-            <div class="bg-gray-50 rounded-xl shadow-lg p-8">
-                <div class="bg-white p-6 rounded-lg border-2 border-gray-200 mb-8">
-                    <h3 class="font-bold text-2xl">Gigante Tecnológico "InnovaCorp" Anuncia Plan de Seguridad Ciudadana con Drones</h3>
-                    <p class="text-gray-600 mt-2">El plan, aplaudido por el gobierno, promete reducir la delincuencia utilizando inteligencia artificial. El CEO de InnovaCorp asegura que la privacidad es su máxima prioridad.</p>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 text-center">
-                    <button class="filter-btn" data-filter="1">
-                        <div class="p-4 bg-red-100 rounded-lg hover:bg-red-200 transition">
-                            <span class="text-3xl">🏢</span><span class="block font-semibold mt-2">Propiedad</span>
-                        </div>
-                    </button>
-                    <button class="filter-btn" data-filter="2">
-                        <div class="p-4 bg-yellow-100 rounded-lg hover:bg-yellow-200 transition">
-                             <span class="text-3xl">📺</span><span class="block font-semibold mt-2">Publicidad</span>
-                        </div>
-                    </button>
-                    <button class="filter-btn" data-filter="3">
-                         <div class="p-4 bg-blue-100 rounded-lg hover:bg-blue-200 transition">
-                            <span class="text-3xl">🎙️</span><span class="block font-semibold mt-2">Fuentes</span>
-                         </div>
-                    </button>
-                    <button class="filter-btn" data-filter="4">
-                        <div class="p-4 bg-green-100 rounded-lg hover:bg-green-200 transition">
-                            <span class="text-3xl">🔥</span><span class="block font-semibold mt-2">Críticas (Flak)</span>
-                        </div>
-                    </button>
-                    <button class="filter-btn" data-filter="5">
-                         <div class="p-4 bg-purple-100 rounded-lg hover:bg-purple-200 transition">
-                            <span class="text-3xl">👹</span><span class="block font-semibold mt-2">Enemigo Común</span>
-                         </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Pon a Prueba -->
-    <section id="quiz" class="py-20 bg-gray-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title">Pon a Prueba tus Conocimientos 🧐</h2>
-            <div id="quiz-container" class="space-y-8">
-                <!-- Las preguntas del quiz se insertarán aquí -->
-            </div>
-            <div id="quiz-results" class="mt-8 text-center hidden">
-                <h3 class="text-2xl font-bold">Resultados</h3>
-                <p id="quiz-score" class="text-xl mt-2"></p>
-                <p id="quiz-feedback" class="text-lg mt-1"></p>
-                <button id="quiz-retry-btn" class="mt-4 bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition">Intentar de nuevo</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Legado -->
-    <footer id="legado" class="py-20 bg-gray-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold">Legado y Recursos</h2>
-            <p class="max-w-3xl mx-auto mt-4 text-gray-300">
-                La obra de Chomsky nos invita a usar nuestra racionalidad para entender tanto las estructuras ocultas de nuestra mente como las del poder que nos rodea. Es un llamado a la curiosidad intelectual y a la responsabilidad cívica.
-            </p>
-            <div class="mt-8">
-                <h4 class="font-semibold text-lg mb-4">Para Seguir Explorando:</h4>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://www.youtube.com/watch?v=BQXsPU25B60" target="_blank" class="text-blue-400 hover:text-blue-300 transition">Documental: "Manufacturing Consent"</a>
-                    <a href="https://chomsky.info/" target="_blank" class="text-blue-400 hover:text-blue-300 transition">Web Oficial de Chomsky</a>
-                </div>
-            </div>
-            <p class="mt-12 text-sm text-gray-500">&copy; 2025 Chomsky Interactivo. Un concepto de aplicación web para la divulgación de ideas.</p>
-        </div>
-    </footer>
-
-    <!-- Modal para los Filtros -->
-    <div id="modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
-        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full p-6 relative">
-            <button id="close-modal-btn" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
-            <h3 id="modal-title" class="text-2xl font-bold mb-4"></h3>
-            <p id="modal-text"></p>
+    <!-- ═══════════════════════════════════════ STATS ═══ -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat"><span class="stat-n">100+</span><span class="stat-l">Libros publicados</span></div>
+            <div class="stat"><span class="stat-n">#1</span><span class="stat-l">Intelectual más citado</span></div>
+            <div class="stat"><span class="stat-n">60+</span><span class="stat-l">Años de activismo</span></div>
+            <div class="stat"><span class="stat-n">1928</span><span class="stat-l">Año de nacimiento</span></div>
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════ CITAS ═══ -->
+    <section class="quotes-section">
+        <div class="quotes-inner">
+            <p class="section-eyebrow">Palabras que interpelan</p>
+            <div class="quote-track" id="quote-track">
+                <div class="quote-slide active">
+                    <blockquote>"Si no creemos en la libertad de expresión de quienes despreciamos, no creemos en ella en absoluto."</blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>"La gente no sabe lo que está pasando, y ni siquiera sabe que no lo sabe."</blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>"La propaganda es para la democracia lo que la violencia para la dictadura."</blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>"El objetivo de la educación debería ser crear seres humanos capaces de hacer cosas nuevas, no simplemente repetir lo que otras generaciones han hecho."</blockquote>
+                </div>
+                <div class="quote-slide">
+                    <blockquote>"El que controla los medios, controla las mentes."</blockquote>
+                </div>
+            </div>
+            <div class="quote-dots" id="quote-dots"></div>
+        </div>
+    </section>
 
-    <script>
-        // --- MÓDULO 1: LÓGICA LINGÜÍSTICA ---
+    <!-- ═══════════════════════════════ LINGÜÍSTICA ═══ -->
+    <section id="linguistica" class="section section-light">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <span class="section-tag">Módulo 01</span>
+                <h2 class="section-title">La Revolución Lingüística</h2>
+                <p class="section-sub">Chomsky transformó para siempre nuestra comprensión del lenguaje: la capacidad gramatical no se aprende, es <strong>innata</strong>. No memorizamos frases; nuestra mente genera infinitas combinaciones nuevas a partir de reglas internas.</p>
+            </div>
 
-        // Generador de Oraciones
-        const generateSentenceBtn = document.getElementById('generateSentenceBtn');
-        const sentenceOutput = document.getElementById('sentenceOutput');
-        const sentenceExplanation = document.getElementById('sentenceExplanation');
+            <div class="modules-grid">
+                <!-- MÓDULO 1 -->
+                <div class="module-card reveal">
+                    <span class="module-num">01</span>
+                    <h3 class="module-title">Generador de Oraciones</h3>
+                    <p class="module-desc">Pulsa el botón y observa cómo el cerebro crea estructuras que nunca antes ha leído. Eso es la <em>Gramática Generativa</em> en acción.</p>
 
-        const subjects = ["Un filósofo", "La galaxia", "El algoritmo", "Un gato cuántico", "La teoría"];
-        const verbs = ["dibuja", "cantaba", "programa", "observa", "revela"];
-        const adverbs = ["ruidosamente", "melancólicamente", "brillantemente", "silenciosamente", "caóticamente"];
-        const objects = ["sueños eléctricos", "teorías transparentes", "un silencio perfecto", "futuros posibles", "la nada"];
+                    <div class="sentence-box" id="sentenceOutput">
+                        <span class="sentence-placeholder">Aquí aparecerá tu oración única...</span>
+                    </div>
 
-        function getRandomElement(arr) {
-            return arr[Math.floor(Math.random() * arr.length)];
-        }
+                    <div class="word-pills" id="wordPills">
+                        <span class="pill pill-s" id="pillSubject"></span>
+                        <span class="pill pill-v" id="pillVerb"></span>
+                        <span class="pill pill-a" id="pillAdverb"></span>
+                        <span class="pill pill-o" id="pillObject"></span>
+                    </div>
 
-        generateSentenceBtn.addEventListener('click', () => {
-            const sentence = `${getRandomElement(subjects)} ${getRandomElement(verbs)} ${getRandomElement(adverbs)} ${getRandomElement(objects)}.`;
-            sentenceOutput.textContent = sentence;
-            sentenceExplanation.classList.remove('opacity-0');
-        });
+                    <button id="generateSentenceBtn" class="btn-module">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                        Generar Oración Nueva
+                    </button>
 
-        // Transformador de Estructuras
-        const transformStructureBtn = document.getElementById('transformStructureBtn');
-        const structureOutput = document.getElementById('structureOutput');
-        const structureExplanation = document.getElementById('structureExplanation');
-        let isPassive = false;
+                    <p id="sentenceExplanation" class="module-hint hidden">
+                        Esta frase es completamente nueva, pero tu cerebro la comprende al instante. Esa es la magia de la <strong>Gramática Universal</strong> propuesta por Chomsky.
+                    </p>
+                </div>
 
-        transformStructureBtn.addEventListener('click', () => {
-            structureOutput.classList.add('opacity-0', 'scale-95');
-            setTimeout(() => {
-                if (isPassive) {
-                    structureOutput.textContent = "El medio de comunicación manipuló la noticia.";
-                } else {
-                    structureOutput.textContent = "La noticia fue manipulada por el medio de comunicación.";
-                }
-                isPassive = !isPassive;
-                structureOutput.classList.remove('opacity-0', 'scale-95');
-                structureExplanation.classList.remove('opacity-0');
-            }, 300);
-        });
+                <!-- MÓDULO 2 -->
+                <div class="module-card reveal">
+                    <span class="module-num">02</span>
+                    <h3 class="module-title">Transformador de Estructuras</h3>
+                    <p class="module-desc">Una misma idea (<strong>estructura profunda</strong>) puede expresarse de formas muy distintas (<em>estructura superficial</em>). Chomsky demostró que estas transformaciones siguen reglas precisas y universales.</p>
 
-        // --- MÓDULO 2: LÓGICA DEL CRÍTICO DEL PODER ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const modal = document.getElementById('modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const modalTitle = document.getElementById('modal-title');
-        const modalText = document.getElementById('modal-text');
+                    <div class="transform-box">
+                        <div class="transform-label" id="transformLabel">Forma activa</div>
+                        <div class="transform-sentence" id="structureOutput">
+                            El medio de comunicación manipuló la noticia.
+                        </div>
+                    </div>
 
-        const filterData = {
-            '1': { title: '🏢 Filtro 1: Propiedad', text: 'La noticia presenta a "InnovaCorp" de forma positiva. Si el dueño del medio de comunicación tiene acciones en InnovaCorp o en el sector tecnológico, es improbable que se publiquen críticas profundas sobre los riesgos del plan.' },
-            '2': { title: '📺 Filtro 2: Publicidad', text: 'InnovaCorp es un "gigante tecnológico", probablemente un gran anunciante. Un medio no arriesgaría millones en ingresos por publicidad publicando un reportaje negativo sobre los peligros de la vigilancia masiva.' },
-            '3': { title: '🎙️ Filtro 3: Fuentes', text: 'La noticia solo cita al CEO de la empresa y al gobierno, las fuentes de poder. No se entrevista a expertos en privacidad, organizaciones de DD.HH. o a los ciudadanos que serán vigilados. La perspectiva está sesgada desde el origen.' },
-            '4': { title: '🔥 Filtro 4: Críticas (Flak)', text: 'Si un periodista publicara un artículo crítico, podría enfrentar una campaña de desprestigio de "grupos pro-seguridad", ser acusado de "no querer combatir la delincuencia" o incluso recibir presiones legales de InnovaCorp.' },
-            '5': { title: '👹 Filtro 5: Enemigo Común', text: 'El plan se justifica en la lucha contra "la delincuencia", un enemigo común que genera miedo. Esto hace que cualquier oposición al plan de vigilancia parezca una defensa de los criminales, silenciando el debate sobre la pérdida de libertades civiles.' }
-        };
+                    <button id="transformStructureBtn" class="btn-module btn-green">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4 4 4M17 8v12m0 0 4-4m-4 4-4-4"/></svg>
+                        Ver desde otra perspectiva
+                    </button>
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filterId = button.dataset.filter;
-                modalTitle.textContent = filterData[filterId].title;
-                modalText.textContent = filterData[filterId].text;
-                modal.classList.remove('hidden');
-            });
-        });
-        
-        function closeModal() {
-            modal.classList.add('hidden');
-        }
+                    <p id="structureExplanation" class="module-hint hidden">
+                        Dos formas distintas, una sola idea central. Acabas de realizar una <strong>transformación sintáctica</strong> chomskiana.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        closeModalBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
+    <!-- ═══════════════════════════ CRÍTICO DEL PODER ═══ -->
+    <section id="politica" class="section section-dark">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <span class="section-tag section-tag-inv">Módulo 02</span>
+                <h2 class="section-title section-title-inv">El Crítico del Poder</h2>
+                <p class="section-sub section-sub-inv">Chomsky y Edward Herman propusieron el <strong>Modelo de Propaganda</strong>: cinco filtros estructurales que condicionan lo que los medios publican, incluso en democracias formalmente libres.</p>
+            </div>
 
-        // --- MÓDULO 3: LÓGICA DEL QUIZ ---
-        const quizContainer = document.getElementById('quiz-container');
-        const quizResults = document.getElementById('quiz-results');
-        const quizScore = document.getElementById('quiz-score');
-        const quizFeedback = document.getElementById('quiz-feedback');
-        const retryBtn = document.getElementById('quiz-retry-btn');
-        
-        const quizQuestions = [
-            {
-                question: 'Según Chomsky, ¿por qué los niños pueden crear oraciones que nunca han oído?',
-                options: [
-                    'Porque imitan muy bien a sus padres.',
-                    'Porque nacen con una "Gramática Universal" innata.',
-                    'Porque estudian mucho en el colegio.',
-                    'Porque tienen mucha imaginación.'
-                ],
-                answer: 1
-            },
-            {
-                question: 'El "Modelo de Propaganda" sugiere que los medios...',
-                options: [
-                    'Son totalmente objetivos y libres.',
-                    'Están controlados por una conspiración secreta.',
-                    'Sirven a los intereses de la élite a través de filtros estructurales.',
-                    'Solo publican noticias falsas.'
-                ],
-                answer: 2
-            },
-            {
-                question: 'Que un medio dependa de anunciantes para sobrevivir corresponde al filtro de:',
-                options: ['Propiedad', 'Publicidad', 'Fuentes', 'Flak'],
-                answer: 1
-            },
-            {
-                question: 'La idea de una "Estructura Profunda" se refiere a:',
-                options: [
-                    'La gramática correcta de una oración.',
-                    'La forma en que se pronuncia una oración.',
-                    'El significado central o idea de una oración.',
-                    'El origen histórico de una palabra.'
-                ],
-                answer: 2
-            }
-        ];
+            <!-- Noticia ficticia estilo periódico -->
+            <div class="newspaper reveal">
+                <div class="newspaper-strip">
+                    <span>EL DIARIO GLOBAL</span>
+                    <span>·</span>
+                    <span>Edición Digital</span>
+                    <span>·</span>
+                    <span>Sección Tecnología</span>
+                </div>
+                <h3 class="newspaper-headline">
+                    Gigante Tecnológico "InnovaCorp" Anuncia Plan de Seguridad Ciudadana con Drones Inteligentes
+                </h3>
+                <p class="newspaper-body">
+                    El proyecto, celebrado por las autoridades competentes, promete una reducción sin precedentes de la delincuencia mediante inteligencia artificial de última generación. El CEO de InnovaCorp, presente en la rueda de prensa gubernamental, garantizó que la protección de la privacidad ciudadana es «la máxima prioridad de la compañía».
+                </p>
+                <p class="newspaper-cta">↓ Analiza esta noticia con los <strong>5 filtros de Chomsky</strong></p>
+            </div>
 
-        let userAnswers = [];
+            <!-- Filtros -->
+            <div class="filters-grid reveal">
+                <button class="filter-card" data-filter="1">
+                    <div class="filter-icon">🏢</div>
+                    <div class="filter-name">Propiedad</div>
+                    <div class="filter-num">F1</div>
+                </button>
+                <button class="filter-card" data-filter="2">
+                    <div class="filter-icon">📺</div>
+                    <div class="filter-name">Publicidad</div>
+                    <div class="filter-num">F2</div>
+                </button>
+                <button class="filter-card" data-filter="3">
+                    <div class="filter-icon">🎙️</div>
+                    <div class="filter-name">Fuentes</div>
+                    <div class="filter-num">F3</div>
+                </button>
+                <button class="filter-card" data-filter="4">
+                    <div class="filter-icon">🔥</div>
+                    <div class="filter-name">Flak</div>
+                    <div class="filter-num">F4</div>
+                </button>
+                <button class="filter-card" data-filter="5">
+                    <div class="filter-icon">👹</div>
+                    <div class="filter-name">Enemigo Común</div>
+                    <div class="filter-num">F5</div>
+                </button>
+            </div>
+        </div>
+    </section>
 
-        function renderQuiz() {
-            quizContainer.innerHTML = '';
-            userAnswers = [];
-            quizResults.classList.add('hidden');
-            quizContainer.classList.remove('hidden');
+    <!-- ═══════════════════════════════════════ QUIZ ═══ -->
+    <section id="quiz" class="section section-light">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <span class="section-tag">Módulo 03</span>
+                <h2 class="section-title">Pon a Prueba tus Ideas</h2>
+                <p class="section-sub">¿Has asimilado los conceptos clave de Chomsky? Responde cada pregunta y descúbrelo.</p>
+            </div>
 
-            quizQuestions.forEach((q, index) => {
-                const questionEl = document.createElement('div');
-                questionEl.className = 'bg-white p-6 rounded-lg shadow';
-                
-                let optionsHTML = q.options.map((opt, optIndex) => `
-                    <label class="block p-3 my-2 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition">
-                        <input type="radio" name="question${index}" value="${optIndex}" class="mr-3">
-                        ${opt}
-                    </label>
-                `).join('');
+            <div class="quiz-wrap">
+                <!-- Barra de progreso -->
+                <div id="quiz-progress-bar" class="quiz-progress-bar reveal">
+                    <div class="quiz-progress-track">
+                        <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                    </div>
+                    <span class="quiz-progress-label" id="quiz-progress-label">Pregunta 1 de 4</span>
+                </div>
 
-                questionEl.innerHTML = `
-                    <p class="font-semibold mb-3">${index + 1}. ${q.question}</p>
-                    <div class="options-container">${optionsHTML}</div>
-                `;
-                quizContainer.appendChild(questionEl);
-            });
-            
-            const submitBtn = document.createElement('button');
-            submitBtn.textContent = 'Ver Resultados';
-            submitBtn.id = 'quiz-submit-btn';
-            submitBtn.className = 'w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition';
-            quizContainer.appendChild(submitBtn);
+                <div id="quiz-container" class="reveal"></div>
 
-            document.getElementById('quiz-submit-btn').addEventListener('click', showResults);
-        }
+                <!-- Resultados -->
+                <div id="quiz-results" class="quiz-results hidden">
+                    <div class="score-circle" id="score-circle">
+                        <span id="score-num">0</span><span class="score-denom" id="score-denom">/4</span>
+                    </div>
+                    <h3 class="results-title">Resultados</h3>
+                    <p id="quiz-score" class="results-score"></p>
+                    <p id="quiz-feedback" class="results-feedback"></p>
+                    <button id="quiz-retry-btn" class="btn-primary" style="margin-top:1.5rem">Intentar de nuevo</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function showResults() {
-            let score = 0;
-            const allOptionGroups = quizContainer.querySelectorAll('.options-container');
+    <!-- ═══════════════════════════════════════ LEGADO ═══ -->
+    <footer id="legado" class="section section-dark">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <span class="section-tag section-tag-inv">Legado</span>
+                <h2 class="section-title section-title-inv">Una Vida de Ideas</h2>
+                <p class="section-sub section-sub-inv">Más de siete décadas cuestionando el poder, estudiando el lenguaje y amplificando las voces silenciadas.</p>
+            </div>
 
-            allOptionGroups.forEach((group, index) => {
-                const selected = group.querySelector(`input[name="question${index}"]:checked`);
-                const labels = group.querySelectorAll('label');
-                
-                labels.forEach(l => l.classList.remove('bg-red-200', 'bg-green-200'));
+            <!-- Timeline -->
+            <div class="timeline reveal">
+                <div class="tl-item">
+                    <div class="tl-year">1957</div>
+                    <div class="tl-body">
+                        <h4>Estructuras Sintácticas</h4>
+                        <p>La obra que inicia la revolución cognitiva en lingüística y desafía el conductismo dominante.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-year">1965</div>
+                    <div class="tl-body">
+                        <h4>Aspectos de la Teoría de la Sintaxis</h4>
+                        <p>Formaliza la distinción entre estructura profunda y estructura superficial.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-year">1988</div>
+                    <div class="tl-body">
+                        <h4>Manufacturing Consent</h4>
+                        <p>Con Edward Herman, expone el Modelo de Propaganda que moldea los medios de comunicación.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-year">1999</div>
+                    <div class="tl-body">
+                        <h4>El Programa Minimalista</h4>
+                        <p>Reformula la gramática generativa con una visión más elegante y económica del lenguaje.</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-year">Hoy</div>
+                    <div class="tl-body">
+                        <h4>Activismo continuo</h4>
+                        <p>Sigue escribiendo y pronunciándose sobre política, medio ambiente y justicia social global.</p>
+                    </div>
+                </div>
+            </div>
 
-                if(selected) {
-                    const answer = parseInt(selected.value);
-                    if(answer === quizQuestions[index].answer) {
-                        score++;
-                        selected.parentElement.classList.add('bg-green-200');
-                    } else {
-                        selected.parentElement.classList.add('bg-red-200');
-                        labels[quizQuestions[index].answer].classList.add('bg-green-200');
-                    }
-                }
-            });
+            <!-- Recursos -->
+            <div class="resources reveal">
+                <a href="https://www.youtube.com/watch?v=BQXsPU25B60" target="_blank" rel="noopener" class="resource-card">
+                    <span class="resource-icon">🎬</span>
+                    <div class="resource-text">
+                        <div class="resource-title">Manufacturing Consent</div>
+                        <div class="resource-sub">Documental completo — YouTube</div>
+                    </div>
+                    <span class="resource-arrow">→</span>
+                </a>
+                <a href="https://chomsky.info/" target="_blank" rel="noopener" class="resource-card">
+                    <span class="resource-icon">🌐</span>
+                    <div class="resource-text">
+                        <div class="resource-title">Web Oficial de Chomsky</div>
+                        <div class="resource-sub">Artículos, entrevistas y más</div>
+                    </div>
+                    <span class="resource-arrow">→</span>
+                </a>
+            </div>
 
-            quizScore.textContent = `Obtuviste ${score} de ${quizQuestions.length} respuestas correctas.`;
-            let feedback = '';
-            if (score === quizQuestions.length) {
-                feedback = '¡Excelente! Ya piensas como un analista chomskiano.';
-            } else if (score >= quizQuestions.length / 2) {
-                feedback = '¡Buen trabajo! Has captado las ideas principales.';
-            } else {
-                feedback = '¡Sigue explorando! Repasa los módulos para afianzar los conceptos.';
-            }
-            quizFeedback.textContent = feedback;
-            quizContainer.classList.add('hidden');
-            quizResults.classList.remove('hidden');
-        }
-        
-        retryBtn.addEventListener('click', renderQuiz);
-        
-        // Carga inicial del Quiz
-        renderQuiz();
+            <p class="footer-note">&copy; 2025 Chomsky Interactivo · Un proyecto de divulgación de ideas.</p>
+        </div>
+    </footer>
 
-    </script>
+    <!-- Modal filtros -->
+    <div id="modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button id="close-modal-btn" class="modal-close" aria-label="Cerrar">&times;</button>
+            <h3 id="modal-title" class="modal-title"></h3>
+            <p id="modal-text" class="modal-body"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
